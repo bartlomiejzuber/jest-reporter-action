@@ -53,7 +53,14 @@ const main = async () => {
 
   const codeCoverage = execSync(testCommand).toString();
   const commentBody = `## Code Coverage Summary
-\`\`\`${codeCoverage}\`\`\`
+
+#### Details
+
+<details><summary>show</summary>
+<p>
+  \`\`\`${codeCoverage}\`\`\`
+</p>
+</details>
 `;
 
   await updateOrCreateComment(githubClient, commentId, commentBody);
