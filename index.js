@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const { execSync } = require('child_process');
 const { GitHub, context } = require('@actions/github');
 
-const updateOrCreateComment = async (githubClient, commentId, body, context) => {
+const updateOrCreateComment = async (githubClient, commentId, body) => {
   const repoName = context.repo.repo;
   const repoOwner = context.repo.owner;
   const prNumber = context.issue.number;
@@ -25,7 +25,7 @@ const updateOrCreateComment = async (githubClient, commentId, body, context) => 
   });
 };
 
-const main = async (_, context) => {
+const main = async () => {
   const repoName = context.repo.repo;
   const repoOwner = context.repo.owner;
   const githubToken = core.getInput('github-token');
@@ -47,7 +47,7 @@ const main = async (_, context) => {
 
   let commentId = existingComment && existingComment.id;
 
-  const response = await updateOrCreateComment(githubClient, commentId, runningCommentBody, context);
+  const response = await updateOrCreateComment(githubClient, commentId, runningCommentBody);
 
   commentId = response && response.data && response.data.id;
 
