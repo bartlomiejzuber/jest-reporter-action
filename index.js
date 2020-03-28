@@ -56,10 +56,10 @@ const main = async () => {
 
 #### Details
 
-<details><summary>show</summary>
-<p>
+<details>
+  <summary>Show details</summary>
+  
   \`\`\`${codeCoverage}\`\`\`
-</p>
 </details>
 `;
 
